@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Next.js & HeroUI Template
 
 This is a template for creating applications using Next.js 14 (app directory) and HeroUI (v2).
@@ -51,3 +52,7 @@ After modifying the `.npmrc` file, you need to run `pnpm install` again to ensur
 ## License
 
 Licensed under the [MIT license](https://github.com/frontio-ai/next-app-template/blob/main/LICENSE).
+=======
+# fractals
+A mathematical fractal visualization app
+>>>>>>> 629b8cacabe6d4af0d482804e3dbe64df3e0b554
