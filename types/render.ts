@@ -1,4 +1,7 @@
-import init, { generate_mandelbrot, generate_julia } from "./fractals.js";
+import init, {
+  generate_mandelbrot,
+  generate_julia,
+} from "../public/pkg/fractals";
 
 export const update = async (
   canvasRef: any,
