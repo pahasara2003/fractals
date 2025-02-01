@@ -40,6 +40,9 @@ export default function Home() {
             defaultSelectedKeys={[fractal]}
             onSelectionChange={(e) => {
               setFractal(e.anchorKey);
+              setScale(1.3);
+              setXOffset(0);
+              setYOffset(0);
             }}
           >
             {fractals.map((fr) => (
@@ -55,6 +58,9 @@ export default function Home() {
               defaultSelectedKeys={[Julia.key]}
               onSelectionChange={(e) => {
                 setJulia(julia.find((item) => item.key == e.anchorKey));
+                setScale(1.3);
+                setXOffset(0);
+                setYOffset(0);
               }}
             >
               {julia.map((fr) => (
