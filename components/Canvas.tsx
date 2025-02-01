@@ -1,9 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
-import init, {
-  generate_mandelbrot,
-  generate_julia,
-} from "../public/wasm/pkg/fractals";
+import init, { generate_mandelbrot, generate_julia } from "/wasm/pkg/fractals";
 const Canvas = ({
   scale,
   setScale,
