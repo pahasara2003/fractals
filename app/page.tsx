@@ -26,8 +26,8 @@ export default function Home() {
   const [scale, setScale] = useState(1.3);
   const [xOffset, setXOffset] = useState(0);
   const [yOffset, setYOffset] = useState(0);
-  const [fractal, setFractal] = useState<any>("Julia");
-  const [Julia, setJulia] = useState<any>(julia[1]);
+  const [fractal, setFractal] = useState<any>("Mandelbrot");
+  const [Julia, setJulia] = useState<any>(julia[7]);
   const RenderControl = () => {
     return (
       <Card className="my-6">

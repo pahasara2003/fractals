@@ -156,8 +156,8 @@ const Canvas = ({
   return (
     <section>
       <canvas
-        width={1200}
-        height={700}
+        width={1100}
+        height={600}
         className="m-0 p-0"
         ref={canvasRef}
       ></canvas>
