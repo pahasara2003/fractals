@@ -1,7 +1,7 @@
 import init, {
   generate_mandelbrot,
   generate_julia,
-} from "../public/pkg/fractals";
+} from "../public/wasm/pkg/fractals";
 
 export const update = async (
   canvasRef: any,
