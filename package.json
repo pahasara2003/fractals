@@ -7,11 +7,10 @@
   "dev": "next dev --turbopack",
   "build": "next build",
   "start": "next start",
-  "deploy":"gh-pages -d out",
-  "lint": "eslint  --ext .ts,.tsx -c .eslintrc.json --fix"
- },
+  "deploy": "gh-pages -d out",
+  "lint": "eslint 'app/**/*.{ts,tsx}' 'components/**/*.{ts,tsx}' 'types/**/*.{ts,tsx}' --fix"
+},
  "dependencies": {
-  
   "@react-aria/ssr": "3.9.7",
   "@react-aria/visually-hidden": "3.8.18",
   "clsx": "2.1.1",
@@ -40,6 +39,7 @@
   "eslint-plugin-react": "^7.23.2",
   "eslint-plugin-react-hooks": "^4.6.0",
   "eslint-plugin-unused-imports": "4.1.4",
+  "gh-pages": "^6.3.0",
   "postcss": "8.4.49",
   "prettier": "3.3.3",
   "tailwind-variants": "0.1.20",
