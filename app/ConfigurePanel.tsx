@@ -22,9 +22,9 @@ const ConfigurePanel = ({
   return (
     <div className=" w-[400px] max-md:hidden backdrop-blur-md rounded-xl text-lime-400 font-[mono] p-3 m-5 absolute z-[100] top-0 right-5">
     <div className='flex justify-evenly items-center'> 
-      <span onClick={()=> setFractal((prev:number)=> (prev + 1)%2)} className='text-black bg-lime-400 w-[25px] h-[25px] text-center cursor-pointer rounded-full'>{"<"}</span>    
+      <button onClick={()=> setFractal((prev:number)=> (prev + 1)%2)} className='text-black bg-lime-400 w-[25px] h-[25px] text-center cursor-pointer rounded-full'>{"<"}</button>    
       <p className="font-bold px-2 text-[1.5rem]">{fractal == 1 ? "Mandelbrot Set" : "Julia Set"}</p>
-      <span className='text-black bg-lime-400 w-[25px] h-[25px] text-center  cursor-pointer rounded-full' onClick={()=> setFractal((prev:number)=> (prev + 1)%2)}>{">"}</span>    
+      <button className='text-black bg-lime-400 w-[25px] h-[25px] text-center  cursor-pointer rounded-full' onClick={()=> setFractal((prev:number)=> (prev + 1)%2)}>{">"}</button>    
     </div>
       
       
