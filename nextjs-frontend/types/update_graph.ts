@@ -1,7 +1,10 @@
-import init, { generate_mandelbrot } from "@/wasm/fractals";
+import init, {
+  generate_mandelbrot,
+  generate_julia,
+} from "@/wasm/fractals"; // adjust the path to where your pkg folder is
 
 
-const fractalType = [generate_mandelbrot];
+const fractalType = [generate_julia,generate_mandelbrot];
 
 
 export default async (
@@ -19,7 +22,7 @@ export default async (
 
    
 
-    const result = fractalType[fractal](newXoffset,-newYoffset, newScale, width,height,iter);
+    const result = fractalType[fractal](newXoffset,-newYoffset, newScale, width,height,iter,c[0],c[1]);
 
     const canvas = canvasRef.current;
     if (!canvas) return;

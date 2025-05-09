@@ -11,7 +11,7 @@ export default function Home() {
   const [yOffset, setYOffset] = useState(0);
   const [iter, setIter] = useState(100);
 
-  const [fractal, setFractal] = useState<any>("Mandelbrot");
+  const [fractal, setFractal] = useState<any>(1);
 
   const dragStart = useRef<[number, number]>([0, 0]);
   const drag = useRef(false);
@@ -118,7 +118,7 @@ export default function Home() {
         xOffset={xOffset}
         yOffset={yOffset}
         c={[0.285, 0.01]}
-        fractal={0}
+        fractal={fractal}
         canvasRef={canvasRef}
         iter={iter}
       />
