@@ -1,167 +1,45 @@
 "use client";
 import { useEffect, useRef } from "react";
-import init, { generate_mandelbrot, generate_julia } from "./fractals";
+import update_graph from "@/types/update_graph";
+
+
+
 const Canvas = ({
   scale,
-  setScale,
   xOffset,
-  setXOffset,
   yOffset,
-  setYOffset,
   c,
   fractal,
+  canvasRef,
+  iter
 }: any) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const update = async (
-    canvasRef: any,
-    newXoffset: number,
-    newYoffset: number,
-    newScale: number,
-    c: number[],
-    fractal: string
-  ) => {
-    await init();
+  const width = Math.max(window.innerWidth,1200);
+  const height = Math.max(window.innerHeight,700);
+  
 
-    const algo = () => {
-      switch (fractal) {
-        case "Mandelbrot":
-          return generate_mandelbrot(
-            -2 * newScale + newXoffset,
-            newScale * -1 + newYoffset,
-            newScale
-          );
-        case "Julia":
-          return generate_julia(
-            -2 * newScale + newXoffset,
-            newScale * -1 + newYoffset,
-            newScale,
-            c[0],
-            c[1]
-          );
-        case "Newton's":
-          return generate_julia(
-            -2 * newScale + newXoffset,
-            newScale * -1 + newYoffset,
-            newScale,
-            c[0],
-            c[1]
-          );
+  useEffect(()=>{
+    window.addEventListener('resize',()=>{
+      const width = Math.max(window.innerWidth,1200);
+  const height = Math.max(window.innerHeight,700);
+      update_graph(canvasRef,xOffset,yOffset,scale,c,fractal,width,height,iter)
 
-        default:
-          return generate_mandelbrot(
-            -2 * newScale + newXoffset,
-            newScale * -1 + newYoffset,
-            newScale
-          );
-      }
-    };
+    })
+  },[])
 
-    const result = algo();
+  update_graph(canvasRef,xOffset,yOffset,scale,c,fractal,width,height,iter)
 
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const imageData = ctx.createImageData(canvas.width, canvas.height);
-    const data = imageData.data;
-
-    for (let i = 0; i < result.length; i++) {
-      const x = i % 1200; // x-coordinate
-      const y = Math.floor(i / 1200); // y-coordinate
-
-      const color = result[i];
-
-      const index = (y * canvas.width + x) * 4;
-      data[index] = color * 0.6;
-      data[index + 1] = color * 0.7;
-      data[index + 2] = color;
-      data[index + 3] = 255;
-    }
-
-    ctx.putImageData(imageData, 0, 0);
-  };
-
-  useEffect(() => {
-    setXOffset(0);
-    setYOffset(0);
-    update(canvasRef, 0, 0, scale, c, fractal);
-  }, [fractal, c]); // Only update when `fractal` changes
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      const activeElement = document.activeElement as any;
-      if (activeElement.tagName !== "INPUT") {
-        switch (event.key) {
-          case "+":
-            setScale((prevScale: any) => {
-              const newScale = prevScale * 0.9;
-              update(canvasRef, xOffset, yOffset, newScale, c, fractal); // Call update with the new scale
-              return newScale;
-            });
-            break;
-          case "-":
-            setScale((prevScale: any) => {
-              const newScale = prevScale / 0.9;
-              update(canvasRef, xOffset, yOffset, newScale, c, fractal); // Call update with the new scale
-              return newScale;
-            });
-            break;
-          case "ArrowLeft":
-            setXOffset((prevScale: any) => {
-              const newOffset = prevScale - 0.1 * scale;
-              update(canvasRef, newOffset, yOffset, scale, c, fractal); // Call update with the new scale
-              return newOffset;
-            });
-            break;
-          case "ArrowRight":
-            setXOffset((prevScale: any) => {
-              const newOffset = prevScale + 0.1 * scale;
-              update(canvasRef, newOffset, yOffset, scale, c, fractal); // Call update with the new scale
-
-              return newOffset;
-            });
-            break;
-          case "ArrowUp":
-            setYOffset((prevScale: any) => {
-              const newOffset = prevScale - 0.05 * scale;
-              update(canvasRef, xOffset, newOffset, scale, c, fractal); // Call update with the new scale
-
-              return newOffset;
-            });
-            break;
-          case "ArrowDown":
-            setYOffset((prevScale: any) => {
-              const newOffset = prevScale + 0.05 * scale;
-              update(canvasRef, xOffset, newOffset, scale, c, fractal); // Call update with the new scale
-
-              return newOffset;
-            });
-            break;
-          default:
-            break;
-        }
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [xOffset, yOffset, scale, c, fractal]); // Dependencies added for proper updates
+  
 
   return (
-    <section>
+    <section  className="p-0 m-0">
       <canvas
-        width={1100}
-        height={600}
-        className="m-0 p-0"
+        width={window.innerWidth}
+        height={window.innerHeight}
+        className={`m-0 left-0 p-0 cursor-grab`}
         ref={canvasRef}
       ></canvas>
-    </section>
+      </section>
   );
 };
 

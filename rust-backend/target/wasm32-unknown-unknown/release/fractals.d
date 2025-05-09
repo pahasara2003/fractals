@@ -1,1 +1,1 @@
-C:\Users\pahasara\Projects\Fractals\target\wasm32-unknown-unknown\release\fractals.wasm: C:\Users\pahasara\Projects\Fractals\src\lib.rs
+/home/pahasara/Desktop/fractals/rust-backend/target/wasm32-unknown-unknown/release/fractals.wasm: /home/pahasara/Desktop/fractals/rust-backend/src/lib.rs
