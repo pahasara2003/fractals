@@ -10,8 +10,9 @@ export default function Home() {
   const [xOffset, setXOffset] = useState(0);
   const [yOffset, setYOffset] = useState(0);
   const [iter, setIter] = useState(100);
+  const [c, setC] = useState([0.285, 0.01]);
 
-  const [fractal, setFractal] = useState<any>(1);
+  const [fractal, setFractal] = useState<any>(0);
 
   const dragStart = useRef<[number, number]>([0, 0]);
   const drag = useRef(false);
@@ -22,12 +23,12 @@ export default function Home() {
   }
 
   useEffect(() => {
-    document.addEventListener("mousedown", (e) => {
+    canvasRef.current?.addEventListener("mousedown", (e) => {
       dragStart.current = [e.clientX, e.clientY];
       drag.current = true;
     });
 
-    document.addEventListener("mousemove", (e) => {
+    canvasRef.current?.addEventListener("mousemove", (e) => {
       let x = e.clientX - dragStart.current[0];
       let y = e.clientY - dragStart.current[1];
 
@@ -36,7 +37,7 @@ export default function Home() {
       }
     });
 
-    document.addEventListener("mouseup", (e) => {
+    canvasRef.current?.addEventListener("mouseup", (e) => {
       let x = e.clientX - dragStart.current[0];
       let y = e.clientY - dragStart.current[1];
       console.log(scale);
@@ -52,7 +53,7 @@ export default function Home() {
     });
     
 
-    document.addEventListener(
+    canvasRef.current?.addEventListener(
       "wheel",
       function (e) {
         e.preventDefault();
@@ -111,13 +112,17 @@ export default function Home() {
         canvasRef={canvasRef}
         iter={iter}
         setIter={setIter}
+        fractal={fractal}
+        setFractal={setFractal}
+        c={c}
+        setC={setC}
       />
       <section className="overflow-hidden max-h-[100vh]">
       <Canvas
         scale={scale}
         xOffset={xOffset}
         yOffset={yOffset}
-        c={[0.285, 0.01]}
+        c={c}
         fractal={fractal}
         canvasRef={canvasRef}
         iter={iter}
