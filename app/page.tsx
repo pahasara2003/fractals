@@ -1,9 +1,8 @@
 "use client";
 
-import Canvas from "@/components/Canvas";
+import Canvas from "../components/Canvas";
 import { useState, useEffect, useRef } from "react";
 import ConfigurePanel from "./ConfigurePanel";
-import Joystick from "./Joystick";
 
 export default function Home() {
   const [scale, setScale] = useState(1);
@@ -128,7 +127,6 @@ export default function Home() {
         iter={iter}
       />
       </section>
-      <Joystick setXOffset = {setXOffset} setYOffset = {setYOffset} scale={scale} canvasRef={canvasRef}/>
     </>
   );
 }
