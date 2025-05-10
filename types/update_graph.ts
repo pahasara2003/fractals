@@ -1,7 +1,7 @@
 import init, {
   generate_mandelbrot,
   generate_julia,
-} from "@/wasm/fractals";
+} from "./fractals";
 
 // ...existing code...
 
