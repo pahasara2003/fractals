@@ -2,11 +2,12 @@
  "name": "next-app-template",
  "version": "0.0.1",
  "private": true,
- "homepage": "https://pahasara2003.github.io/fractals",
+"homepage": "https://pahasara2003.github.io/fractals",
  "scripts": {
   "dev": "next dev --turbopack",
   "build": "next build",
   "start": "next start",
+
   "deploy": "gh-pages -d out",
   "lint": "eslint 'app/**/*.{ts,tsx}' 'components/**/*.{ts,tsx}' 'types/**/*.{ts,tsx}' --fix"
 },

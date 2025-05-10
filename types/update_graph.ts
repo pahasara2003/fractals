@@ -1,15 +1,14 @@
 import init, {
   generate_mandelbrot,
   generate_julia,
-} from "./fractals";
+} from "@/wasm/fractals"; // adjust the path to where your pkg folder is
 
-// ...existing code...
 
 const fractalType = [generate_julia,generate_mandelbrot];
 
 
-export default async function update_graph(
-  canvasRef: any,
+export default async (
+    canvasRef: any,
     newXoffset: number,
     newYoffset: number,
     newScale: number,
@@ -18,7 +17,7 @@ export default async function update_graph(
     width:number,
     height:number,
     iter:number
-  ) {
+  ) => {
     await init();
 
    
