@@ -1,8 +1,9 @@
 import init, {
   generate_mandelbrot,
   generate_julia,
-} from "../wasm/fractals"; // adjust the path to where your pkg folder is
+} from "@/wasm/fractals";
 
+// ...existing code...
 
 const fractalType = [generate_julia,generate_mandelbrot];
 

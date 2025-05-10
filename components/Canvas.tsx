@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import update_graph from "../types/update_graph";
+import update_graph from "@/types/update_graph";
 
 
 
